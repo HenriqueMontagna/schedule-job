@@ -31,3 +31,6 @@ jobs:
 
         - name: Git Reset With Main
           run: git reset --hard origin/main
+
+        - name: Git Push Reseted Branch
+          run: git push --force
