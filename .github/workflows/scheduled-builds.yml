@@ -11,12 +11,13 @@ jobs:
         - name: Checkout Actions
           uses: actions/checkout@v2
 
-        - uses: webfactory/ssh-agent@v0.5.4
+        - name: Configure SSH Keys
+          uses: webfactory/ssh-agent@v0.5.4
           with:
               ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-        -   name: Clone the Repository
-            run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
+        - name: Clone the Repository
+          run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
 
-        -   name: Git Branch
-            run: git branch
+        - name: Git Branch
+          run: git branch
