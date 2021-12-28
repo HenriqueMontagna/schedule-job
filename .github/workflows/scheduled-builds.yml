@@ -30,4 +30,4 @@ jobs:
           run: git checkout qa
 
         - name: Git Reset With Main
-          run: git reset --hard main
+          run: git reset --hard origin/main
