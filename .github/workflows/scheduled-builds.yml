@@ -16,8 +16,14 @@ jobs:
           with:
               ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-        - name: Clone the Repository
-          run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
+        #- name: Clone the Repository
+        #  run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
 
         - name: Git Branch
           run: git branch
+
+        - name: Git Checkout QA
+          run: git checkout qa
+
+        - name: Git Reset With Main
+          run: git reset --hard main
