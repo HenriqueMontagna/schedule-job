@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: '*/2 * * * *'
   workflow_dispatch:
+
+env:
+  SSH_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN+KVl/QovBxRBlO2CMgpZ1PxQzQW8osCK0wivw8qG0R actions@github.com
+
 jobs:
   build:
     runs-on: ubuntu-latest
