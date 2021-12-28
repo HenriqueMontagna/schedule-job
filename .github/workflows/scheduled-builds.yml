@@ -10,6 +10,7 @@ jobs:
     steps:
         - name: Checkout Actions
           uses: actions/checkout@v2
+          with: { ref: qa }
 
         - name: Configure SSH Keys
           uses: webfactory/ssh-agent@v0.5.4
