@@ -1,7 +1,7 @@
 name: Reset QA Branch
 on:
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '25 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -16,9 +16,6 @@ jobs:
           uses: webfactory/ssh-agent@v0.5.4
           with:
               ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-        #- name: Clone the Repository
-        #  run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
 
         - name: Git Fetch All
           run: git fetch origin
