@@ -4,15 +4,25 @@ on:
     - cron: '*/2 * * * *'
   workflow_dispatch:
 
-env:
-  SSH_KEY: AAAAC3NzaC1lZDI1NTE5AAAAIN+KVl/QovBxRBlO2CMgpZ1PxQzQW8osCK0wivw8qG0R
-
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: pkg-src/github-action-git-bash@v1.1
-    - name: Running Reset QA Branch Schedule
-      run: |
-        echo "Is Running"
-        git clone git@github.com:HenriqueMontagna/test-schedule-job.git
+  runs-on: ubuntu-18.04
+  steps:
+      -   uses: actions/checkout@v1
+
+      -   name: Setup SSH Keys and known_hosts
+          env:
+              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              mkdir -p ~/.ssh
+              ssh-keyscan github.com >> ~/.ssh/known_hosts
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+
+      -   name: Some task that fetches dependencies
+          env:
+              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: ./fetch-deps.sh
+
+      -   name: Clone the Repository
+          run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
