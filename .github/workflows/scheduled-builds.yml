@@ -1,12 +1,12 @@
 name: Reset QA Branch
 on:
   schedule:
-    - cron: '25 * * * *'
+    - cron: '50 20 * * *'
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
         - name: Checkout Actions
           uses: actions/checkout@v2
@@ -22,9 +22,6 @@ jobs:
 
         - name: Git Branch
           run: git branch
-
-        - name: Git Checkout QA
-          run: git checkout qa
 
         - name: Git Reset With Main
           run: git reset --hard origin/main
