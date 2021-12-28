@@ -10,3 +10,4 @@ jobs:
     - name: Running Reset QA Branch Schedule
       run: |
         echo "Is Running"
+        git clone git@github.com:HenriqueMontagna/test-schedule-job.git
