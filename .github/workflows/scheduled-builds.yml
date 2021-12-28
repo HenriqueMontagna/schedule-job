@@ -20,6 +20,9 @@ jobs:
         #- name: Clone the Repository
         #  run: git clone git@github.com:HenriqueMontagna/test-schedule-job.git
 
+        - name: Git Fetch All
+          run: git fetch origin
+
         - name: Git Branch
           run: git branch
 
