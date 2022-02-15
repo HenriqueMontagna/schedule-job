@@ -50,10 +50,7 @@ jobs:
     needs: build
     steps:
 
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
-          token: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
 
       - name: Configure SSH Keys
         uses: webfactory/ssh-agent@v0.5.4
