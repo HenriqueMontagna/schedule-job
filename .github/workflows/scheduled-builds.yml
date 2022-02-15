@@ -53,7 +53,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Configure SSH Keys
         uses: webfactory/ssh-agent@v0.5.4
