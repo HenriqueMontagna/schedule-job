@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Reset Branch:
+  Reset_Branch:
     runs-on: ubuntu-20.04
     steps:
         - name: Checkout Actions
@@ -36,7 +36,7 @@ jobs:
           run: git push --force
 
 
-  Open Pull Request:
+  Open_Pull_Request:
     runs-on: ubuntu-20.04
     needs: build
     steps:
