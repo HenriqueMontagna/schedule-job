@@ -55,4 +55,3 @@ jobs:
             - Pense sempre no impacto do seu PR
             - Teste como se não houvesse amanhã S2
             - GO PICPAY!
-          draft: true
