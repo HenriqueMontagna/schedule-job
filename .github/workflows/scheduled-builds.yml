@@ -50,7 +50,13 @@ jobs:
     needs: build
     steps:
 
-      - uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
+      - uses: actions/checkout@v2
+      - shell: bash
+        run: |
+          git config user.name "name"
+          git config user.email "<>"
+          git config push.default "current"
+          ./run
 
       - name: Configure SSH Keys
         uses: webfactory/ssh-agent@v0.5.4
