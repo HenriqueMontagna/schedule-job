@@ -28,3 +28,21 @@ jobs:
 
         - name: Git Push Reseted Branch
           run: git push --force
+
+        - name: Create Pull Request
+          uses: peter-evans/create-pull-request@v3
+          with:
+            token: ${{ secrets.SSH_PRIVATE_KEY }}
+            commit-message: 'Criação Automática do PR do Reset da Branch QA'
+            committer: GitHub <actions@github.com>
+            author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+            branch: qa
+            title: '[BRANCH QA] - NÃO MERGEAR'
+            body: |
+              Branch de QA
+              - Não mergear na master
+              - Reset e PR gerador via pipeline
+              - Pense sempre no impacto do seu PR
+              - Teste como se não houvesse amanhã S2
+              - GO PICPAY!
+            draft: true
