@@ -38,7 +38,7 @@ jobs:
 
   Open_Pull_Request:
     runs-on: ubuntu-20.04
-    needs: build
+    needs: Reset_Branch
     steps:
 
       - uses: actions/checkout@v2
