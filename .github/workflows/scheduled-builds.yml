@@ -26,16 +26,20 @@ jobs:
         - name: Git Reset With Main
           run: git reset --hard origin/main
 
-        - name: Git Push Reseted Branch
-          run: git push --force
-
         - name: Make Changes to Open Pull Request
           run: date +%s > report.txt
 
-        - name: Git Push Modified Branch
-          run: git push
+        - name: Git Push Reseted Branch
+          run: git push --force
 
-        - name: Create Pull Request
+  ResetBranch:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Actions
+          uses: actions/checkout@v2
+          with: { ref: qa }
+
+      - name: Create Pull Request
           uses: peter-evans/create-pull-request@v3
           with:
             token: ${{ secrets.SSH_PRIVATE_KEY }}
