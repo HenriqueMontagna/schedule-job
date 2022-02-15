@@ -27,7 +27,7 @@ jobs:
           run: git reset --hard origin/main
 
         - name: Make Changes to Open Pull Request
-          run: '\' \' >> TXT_DA_MAIN.txt'
+          run: ' " " >> TXT_DA_MAIN.txt '
 
         - name: Git Push Reseted Branch
           run: git push --force
