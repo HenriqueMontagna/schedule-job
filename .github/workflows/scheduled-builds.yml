@@ -29,6 +29,12 @@ jobs:
         - name: Make Changes to Open Pull Request
           run: date +%s > report.txt
 
+        - name: Adding to Stage
+          run: git add .
+
+        - name: Commit Differences
+          run: git commit -m 'Differences to Open PR'
+
         - name: Git Push Reseted Branch
           run: git push --force
 
