@@ -34,6 +34,7 @@ jobs:
 
   ResetBranch:
     runs-on: ubuntu-20.04
+    needs: build
     steps:
 
       - name: Checkout Actions
