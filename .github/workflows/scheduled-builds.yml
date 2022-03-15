@@ -1,0 +1,57 @@
+name: Reset QA Branch
+on:
+  schedule:
+    - cron: '50 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  Reset_Branch:
+    runs-on: ubuntu-20.04
+    steps:
+        - name: Checkout Actions
+          uses: actions/checkout@v2
+          with: { ref: qa }
+
+        - name: Configure SSH Keys
+          uses: webfactory/ssh-agent@v0.5.4
+          with:
+              ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+        - name: Git Fetch All
+          run: git fetch origin
+
+        - name: Git Branch
+          run: git branch
+
+        - name: Git Reset With Main
+          run: git reset --hard origin/main
+
+        - name: Git Push Reseted Branch
+          run: git push --force
+
+
+  Open_Pull_Request:
+    runs-on: ubuntu-20.04
+    needs: Reset_Branch
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Make Changes to Open Pull Request
+        run: date +%s >> README.md
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'Criação Automática do PR do Reset da Branch QA'
+          committer: GitHub <actions@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: '[BRANCH QA] - NÃO MERGEAR'
+          branch: qa
+          body: |
+            Branch de QA
+            - Não mergear na master
+            - Reset e PR gerador via pipeline
+            - Pense sempre no impacto do seu PR
+            - Teste como se não houvesse amanhã S2
+            - GO!
